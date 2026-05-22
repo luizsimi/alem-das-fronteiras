@@ -3,9 +3,9 @@
 
   This is a code bundle for Melhorar conteúdo design system. The original project is available at https://www.figma.com/design/r09PeEVVMdEJOMtCY6221V/Melhorar-conte%C3%BAdo-design-system.
 
-  ## Running the code
+  ## Rode o código
 
-  Run `npm i` to install the dependencies.
+  Rodar `npm i` para instalar as dependencias.
 
-  Run `npm run dev` to start the development server.
+  Rodar `npm run dev` para iniciar o sevidor de desenvolvimento.
   
