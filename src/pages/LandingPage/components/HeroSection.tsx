@@ -178,7 +178,7 @@ export default function HeroSection() {
           >
             <img
               src={img1}
-              alt="Detalhe 1"
+              alt="Voluntários da UFS auxiliando imigrantes na triagem de documentos"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
           </motion.div>
@@ -188,7 +188,7 @@ export default function HeroSection() {
           >
             <img
               src={img2}
-              alt="Detalhe 2"
+              alt="Refugiados participando de oficina de integração cultural"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
           </motion.div>
@@ -198,7 +198,7 @@ export default function HeroSection() {
           >
             <img
               src={img3}
-              alt="Detalhe 3"
+              alt="Atendimento jurídico gratuito para migrantes na UFS"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
           </motion.div>
@@ -208,7 +208,7 @@ export default function HeroSection() {
           >
             <img
               src={img4}
-              alt="Detalhe 4"
+              alt="Imigrantes em atividade de acolhimento e suporte emocional"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
           </motion.div>

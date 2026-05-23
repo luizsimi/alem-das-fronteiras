@@ -20,6 +20,10 @@ export default function CommitmentSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
           <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
             whileHover={{ y: -10 }}
             className="bg-background rounded-[32px] p-10 text-center border-2 border-border group hover:border-foreground transition-colors"
           >
@@ -32,6 +36,10 @@ export default function CommitmentSection() {
           </motion.div>
 
           <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.2 }}
             whileHover={{ y: -10 }}
             className="bg-[#121212] rounded-[32px] p-10 text-center border-2 border-[#121212] group relative overflow-hidden"
           >
@@ -45,6 +53,10 @@ export default function CommitmentSection() {
           </motion.div>
 
           <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.3 }}
             whileHover={{ y: -10 }}
             className="bg-primary rounded-[32px] p-10 text-center border-2 border-primary group shadow-inner"
           >

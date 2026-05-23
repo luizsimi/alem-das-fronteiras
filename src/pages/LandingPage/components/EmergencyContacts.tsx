@@ -65,18 +65,19 @@ export default function EmergencyContacts() {
                 color: "bg-[#2a2a2a] text-white",
               },
             ].map((contact, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ scale: 1.05 }}
-                className={`${contact.color} p-8 rounded-[32px] flex flex-col justify-center items-center text-center shadow-lg border border-white/5 cursor-pointer`}
-              >
-                <span className="font-poppins font-bold text-[48px] leading-none mb-2">
-                  {contact.num}
-                </span>
-                <span className="font-plus-jakarta font-bold text-[16px] opacity-80">
-                  {contact.name}
-                </span>
-              </motion.div>
+              <a key={idx} href={`tel:${contact.num}`} aria-label={`Ligar para ${contact.name}: ${contact.num}`}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className={`${contact.color} p-8 rounded-[32px] flex flex-col justify-center items-center text-center shadow-lg border border-white/5 cursor-pointer`}
+                >
+                  <span className="font-poppins font-bold text-[48px] leading-none mb-2">
+                    {contact.num}
+                  </span>
+                  <span className="font-plus-jakarta font-bold text-[16px] opacity-80">
+                    {contact.name}
+                  </span>
+                </motion.div>
+              </a>
             ))}
           </div>
         </div>

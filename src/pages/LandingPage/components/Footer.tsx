@@ -1,6 +1,26 @@
 import React from "react";
 
 export default function Footer() {
+  const servicoLinks = [
+    { label: "Regularização Migratória", href: "/#servicos" },
+    { label: "Documentos Essenciais", href: "/#servicos" },
+    { label: "Assistência Social", href: "/#servicos" },
+    { label: "Direitos e Cidadania", href: "/#servicos" },
+  ];
+
+  const recursoLinks = [
+    { label: "FAQ", href: "/#faq" },
+    { label: "Emergência", href: "/#recursos" },
+    { label: "Eventos", href: null },
+    { label: "Blog", href: null },
+  ];
+
+  const legalLinks = [
+    { label: "Privacidade", href: null },
+    { label: "Termos", href: null },
+    { label: "Acessibilidade", href: "/#inicio" },
+  ];
+
   return (
     <footer className="bg-[#121212] pt-20 pb-10 border-t-8 border-primary text-white">
       <div className="max-w-[1400px] mx-auto px-6">
@@ -27,19 +47,14 @@ export default function Footer() {
                 SERVIÇOS
               </h4>
               <div className="flex flex-col gap-4">
-                {[
-                  "Documentação",
-                  "Integração Cultural",
-                  "Suporte Acadêmico",
-                  "Orientação Legal",
-                ].map((item) => (
+                {servicoLinks.map((item) => (
                   <a
-                    key={item}
-                    href="#"
+                    key={item.label}
+                    href={item.href ?? undefined}
                     className="font-plus-jakarta font-medium text-[14px] text-[#fefeff]/70 hover:text-primary transition-colors flex items-center gap-2 group"
                   >
                     <span className="w-0 group-hover:w-2 h-[2px] bg-primary transition-all duration-300"></span>
-                    {item}
+                    {item.label}
                   </a>
                 ))}
               </div>
@@ -50,15 +65,27 @@ export default function Footer() {
                 RECURSOS
               </h4>
               <div className="flex flex-col gap-4">
-                {["Guias", "FAQ", "Eventos", "Blog"].map((item) => (
-                  <a
-                    key={item}
-                    href="#"
-                    className="font-plus-jakarta font-medium text-[14px] text-[#fefeff]/70 hover:text-primary transition-colors flex items-center gap-2 group"
-                  >
-                    <span className="w-0 group-hover:w-2 h-[2px] bg-primary transition-all duration-300"></span>
-                    {item}
-                  </a>
+                {recursoLinks.map((item) => (
+                  item.href ? (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="font-plus-jakarta font-medium text-[14px] text-[#fefeff]/70 hover:text-primary transition-colors flex items-center gap-2 group"
+                    >
+                      <span className="w-0 group-hover:w-2 h-[2px] bg-primary transition-all duration-300"></span>
+                      {item.label}
+                    </a>
+                  ) : (
+                    <span
+                      key={item.label}
+                      className="font-plus-jakarta font-medium text-[14px] text-[#fefeff]/30 flex items-center gap-2"
+                    >
+                      {item.label}
+                      <span className="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded-full font-bold tracking-wide">
+                        Em breve
+                      </span>
+                    </span>
+                  )
                 ))}
               </div>
             </div>
@@ -93,18 +120,29 @@ export default function Footer() {
             © 2026 Além das Fronteiras - UFS. Todos os direitos reservados.
           </p>
           <div className="flex flex-wrap justify-center gap-6">
-            {["Privacidade", "Termos", "Acessibilidade"].map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="font-plus-jakarta font-medium text-[14px] text-[#fefeff]/60 hover:text-[#fefeff] transition-colors"
-              >
-                {link}
-              </a>
-            ))}
+            {legalLinks.map((link) =>
+              link.href ? (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="font-plus-jakarta font-medium text-[14px] text-[#fefeff]/60 hover:text-[#fefeff] transition-colors"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <span
+                  key={link.label}
+                  className="font-plus-jakarta font-medium text-[14px] text-[#fefeff]/30 cursor-not-allowed"
+                  title="Em breve"
+                >
+                  {link.label}
+                </span>
+              )
+            )}
           </div>
         </div>
       </div>
     </footer>
   );
 }
+

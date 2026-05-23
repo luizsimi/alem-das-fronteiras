@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { Sun, Moon, X, Menu, ArrowUpRight } from "lucide-react";
 import logoImg from "../../../assets/brand/logo.png";
 
@@ -117,38 +118,47 @@ export default function Header({
           </button>
         </div>
 
-        {/* Menu Suspenso Mobile */}
-        {isMenuOpen && (
-          <div className="absolute top-24 left-4 right-4 bg-card border border-border rounded-[24px] p-6 flex flex-col gap-4 shadow-2xl md:hidden">
-            <a
-              href="#inicio"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-[18px] font-plus-jakarta font-bold text-foreground py-2 border-b border-border/40"
+        {/* Menu Suspenso Mobile com animação */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              key="mobile-menu"
+              initial={{ opacity: 0, y: -12, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 300, damping: 28 }}
+              className="absolute top-24 left-4 right-4 bg-card border border-border rounded-[24px] p-6 flex flex-col gap-4 shadow-2xl md:hidden"
             >
-              Início
-            </a>
-            <a
-              href="#faq"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-[18px] font-plus-jakarta font-bold text-foreground py-2 border-b border-border/40"
-            >
-              FAQ
-            </a>
-            <a
-              href="#recursos"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-[18px] font-plus-jakarta font-bold text-foreground py-2 border-b border-border/40"
-            >
-              Emergência
-            </a>
-            <a
-              href="#"
-              className="bg-primary text-primary-foreground text-center px-6 py-4 rounded-[16px] font-plus-jakarta font-bold text-[16px] mt-2 flex justify-center items-center gap-2 shadow-lg shadow-primary/20"
-            >
-              Baixar App <ArrowUpRight size={18} />
-            </a>
-          </div>
-        )}
+              <a
+                href="#inicio"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-[18px] font-plus-jakarta font-bold text-foreground py-2 border-b border-border/40"
+              >
+                Início
+              </a>
+              <a
+                href="#faq"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-[18px] font-plus-jakarta font-bold text-foreground py-2 border-b border-border/40"
+              >
+                FAQ
+              </a>
+              <a
+                href="#recursos"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-[18px] font-plus-jakarta font-bold text-foreground py-2 border-b border-border/40"
+              >
+                Emergência
+              </a>
+              <a
+                href="#"
+                className="bg-primary text-primary-foreground text-center px-6 py-4 rounded-[16px] font-plus-jakarta font-bold text-[16px] mt-2 flex justify-center items-center gap-2 shadow-lg shadow-primary/20"
+              >
+                Baixar App <ArrowUpRight size={18} />
+              </a>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Indicador de Rolagem Dinâmico */}

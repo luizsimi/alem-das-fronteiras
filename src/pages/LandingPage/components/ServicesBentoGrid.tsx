@@ -165,6 +165,9 @@ export default function ServicesBentoGrid() {
               Revalidação de diplomas e cursos.
             </p>
           </div>
+          <div className="w-10 h-10 bg-background rounded-full flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-colors mt-auto">
+            <ArrowUpRight size={20} />
+          </div>
         </motion.a>
 
         <motion.a
@@ -180,6 +183,9 @@ export default function ServicesBentoGrid() {
             <p className="text-[14px] text-muted-foreground">
               Acesso ao SUS e Saúde Mental.
             </p>
+          </div>
+          <div className="w-10 h-10 bg-background rounded-full flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-colors mt-auto">
+            <ArrowUpRight size={20} />
           </div>
         </motion.a>
       </div>

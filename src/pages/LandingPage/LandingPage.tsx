@@ -5,7 +5,7 @@ import ImpactBar from "./components/ImpactBar";
 import AppPromoSection from "./components/AppPromoSection";
 import ServicesBentoGrid from "./components/ServicesBentoGrid";
 import CommitmentSection from "./components/CommitmentSection";
-import { CommunityFAQSection } from "../../components/CommunityFAQSection";
+import { CommunityFAQSection } from "./components/CommunityFAQSection";
 import EmergencyContacts from "./components/EmergencyContacts";
 import Footer from "./components/Footer";
 
@@ -15,16 +15,27 @@ export default function LandingPage() {
   const [darkMode, setDarkMode] = React.useState(false);
 
   React.useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
+    const saved = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = saved ? saved === "dark" : prefersDark;
+
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
     setDarkMode(isDark);
   }, []);
 
   const toggleDarkMode = () => {
-    if (document.documentElement.classList.contains("dark")) {
+    const isDark = document.documentElement.classList.contains("dark");
+    if (isDark) {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
       setDarkMode(false);
     } else {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
       setDarkMode(true);
     }
   };
