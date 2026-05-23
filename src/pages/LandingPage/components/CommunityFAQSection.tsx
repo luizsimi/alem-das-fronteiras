@@ -1,11 +1,39 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MessageSquare, HelpCircle } from 'lucide-react';
+import { MessageSquare, HelpCircle, Plus, Minus } from 'lucide-react';
 import forumScreen from '../../../assets/mockups/Fórum.png';
+
+const faqData = [
+  {
+    question: "O Além das Fronteiras é gratuito?",
+    answer: "Sim, nossa plataforma é totalmente gratuita para migrantes e refugiados."
+  },
+  {
+    question: "Em quais idiomas vocês oferecem suporte?",
+    answer: "Oferecemos suporte em Português, Espanhol, Inglês, Francês e Árabe."
+  },
+  {
+    question: "Quem pode usar a plataforma?",
+    answer: "Qualquer pessoa em situação de migração ou refúgio, além de voluntários e profissionais que desejam ajudar."
+  },
+  {
+    question: "Como posso me tornar voluntário?",
+    answer: "Você pode procurar a diretoria de sua faculdade, ela dará todo suporte para que você possa se cadastrar para ser um voluntário."
+  },
+  {
+    question: "Vocês ajudam com regularização de documentos?",
+    answer: "Sim, conectamos você a profissionais e ONGs especializadas em assistência jurídica e regularização."
+  },
+  {
+    question: "O aplicativo está disponível para iOS e Android?",
+    answer: "Sim, você pode baixar o Além das Fronteiras tanto na App Store quanto no Google Play."
+  }
+];
 import faqScreen from '../../../assets/mockups/FAQ.png';
 
 export function CommunityFAQSection() {
   const [activeTab, setActiveTab] = useState<'forum' | 'faq'>('forum');
+  const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
 
   return (
     <section id="faq" className="py-24 px-6 max-w-[1400px] mx-auto overflow-hidden">
@@ -113,6 +141,57 @@ export function CommunityFAQSection() {
         </div>
 
       </div>
+
+      <AnimatePresence>
+        {activeTab === 'faq' && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+            animate={{ opacity: 1, height: 'auto', marginTop: 64 }}
+            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-10">
+                <span className="text-primary font-plus-jakarta font-bold text-[16px] uppercase tracking-wider mb-2 block">Dúvidas frequentes</span>
+                <h3 className="font-poppins font-bold text-[32px] text-foreground leading-tight mb-4">Perguntas frequentes</h3>
+                <p className="font-sans font-normal text-[18px] text-muted-foreground">
+                  Encontre respostas para as principais dúvidas sobre nossa plataforma.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                {faqData.map((faq, index) => (
+                  <div key={index} className="bg-card border border-border rounded-2xl overflow-hidden transition-all hover:border-primary/30 shadow-[0_8px_24px_rgba(0,0,0,0.02)]">
+                    <button
+                      onClick={() => setOpenFAQIndex(openFAQIndex === index ? null : index)}
+                      className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                    >
+                      <span className="font-plus-jakarta font-bold text-[18px] text-foreground pr-8">{faq.question}</span>
+                      <div className={`p-2 rounded-full transition-colors flex-shrink-0 ${openFAQIndex === index ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                        {openFAQIndex === index ? <Minus size={20} /> : <Plus size={20} />}
+                      </div>
+                    </button>
+                    <AnimatePresence>
+                      {openFAQIndex === index && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <div className="px-6 pb-6 pt-0 text-[16px] text-muted-foreground font-sans leading-relaxed">
+                            {faq.answer}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
