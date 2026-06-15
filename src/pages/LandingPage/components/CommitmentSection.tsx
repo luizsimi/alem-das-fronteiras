@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 export default function CommitmentSection() {
   return (
     <section className="py-10 px-6 max-w-[1400px] mx-auto">
-      <div className="bg-card border-2 border-foreground rounded-[32px] p-8 md:p-10 shadow-[6px_6px_0_var(--foreground)] relative overflow-hidden">
+      <div className="bg-card rounded-[32px] p-8 md:p-10 relative overflow-hidden">
         {/* Fundo geométrico decorativo */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[60px]" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-foreground/5 rounded-full blur-[60px]" />
