@@ -33,7 +33,7 @@ export default function ServicesBentoGrid() {
       </div>
 
       {/* Definição do Bento Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[140px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[minmax(140px,auto)]">
         {/* Card Destaque: Regularização Migratória */}
         <motion.a
           href="https://www.gov.br/pf/pt-br/assuntos/imigracao"
@@ -140,7 +140,7 @@ export default function ServicesBentoGrid() {
               Mecanismos de proteção contra abusos, racismo e acesso à justiça.
             </p>
           </div>
-          <div className="relative z-10 mt-2 sm:mt-0 w-8 h-8 bg-foreground rounded-full flex items-center justify-center text-background group-hover:-translate-y-1 transition-transform shadow-xl shrink-0">
+          <div className="absolute top-4 right-4 sm:relative sm:top-auto sm:right-auto z-10 sm:mt-0 w-8 h-8 bg-foreground rounded-full flex items-center justify-center text-background group-hover:-translate-y-1 transition-transform shadow-xl shrink-0">
             <ArrowUpRight size={14} />
           </div>
         </motion.a>
